@@ -1,0 +1,22 @@
+# Getting PARADISE Ready for Ansible
+1. Run the Repair script
+2. Install .NET 4.5
+3. Install WMF 4.0
+4. Set all networks to private interfaces:
+ * cmd: start_stop_procs.pl stop
+ * disable all network adapters except the "hospital connection"
+    * and including the loopback connection
+ * powershell: winrm quickconfig
+    * answered 'yes'
+ * powershell: winrm get wimrm/config
+ * change the Windows Remote Shell setting to on/true
+    http://superuser.com/questions/1051813/how-to-properly-set-the-allow-remote-shell-access-setting-in-group-policy-so-a
+ * Run the Ansible Config Script -Verbose
+ * undo all security settings:
+ http://www.hurryupandwait.io/blog/understanding-and-troubleshooting-winrm-connection-and-authentication-a-thrill-seekers-guide-to-adventure
+ * Change the Computer Name to R530CDAS203
+ * make it bonjour accessible
+ * netplwiz
+ * set max memory per shell and max procs per shell 
+  https://social.technet.microsoft.com/Forums/office/en-US/4d6e99ab-970f-4616-b53d-2b44e56caf16/not-enough-quota-is-available-to-process-this-command?forum=winserverpowershell
+
