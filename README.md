@@ -61,10 +61,15 @@ When you toggle them back on, Windows will ask what type of network they're
 connected to; select "private" or "home", etc...
 
 ## 4. Start WinRM
- * powershell: winrm quickconfig
-   * answered 'y' to:
-   1. Set WinRM service type to dealyed auto start?
-   2. Create a WinRM listener on HTTP://* ....?
+In a PowerShell enter the following command:
+
+```
+> winrm quickconfig
+```
+
+Answer 'y' to the following prompts:
+1. Set WinRM service type to dealyed auto start?
+2. Create a WinRM listener on HTTP://* ....?
 
 ## 5. Change the Windows Remote Shell Setting to enabled/true
  * From [superuser.com](http://superuser.com/questions/1051813/how-to-properly-set-the-allow-remote-shell-access-setting-in-group-policy-so-a), Hit 'Start', in the searchbox enter `gpedit.msc` then press 'Enter'.
@@ -177,7 +182,7 @@ the user-name and password that you plan to start a remote session with in your
 windows machine. It is *required* that the user has a password.
 
 # Bonus References
-In addition the links I've used above, these posts were very useful for
+In addition to the links I've used above, these posts were very useful for
 understanding why some settings are unsafe and how to turn those settings on.
 
 1. http://www.hurryupandwait.io/blog/understanding-and-troubleshooting-winrm-connection-and-authentication-a-thrill-seekers-guide-to-adventure
