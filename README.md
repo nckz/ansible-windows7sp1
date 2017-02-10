@@ -1,4 +1,4 @@
-# Getting PARADISE Ready for Ansible
+# Installing Ansible on Windows 7 SP1
 The final goal of these steps is to get the Ansible configuration script
 (ConfigureRemotingForAnsible.ps1 -Verbose) to complete successfully.  And to
 run a successful Ansible win_ping.
