@@ -1,0 +1,8 @@
+PS C:\Users\me\Desktop\ansible-windows7sp1> .\ConfigureRemotingForAnsible.ps1 -Verbose
+VERBOSE: Verifying WinRM service.
+VERBOSE: PS Remoting is already enabled.
+VERBOSE: SSL listener is already active.
+VERBOSE: Basic auth is already enabled.
+VERBOSE: Firewall rule already exists to allow WinRM HTTPS.
+VERBOSE: HTTP: Disabled | HTTPS: Enabled
+VERBOSE: PS Remoting has been successfully configured for Ansible.
