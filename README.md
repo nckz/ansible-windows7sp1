@@ -32,7 +32,7 @@ In an Administrator command window run:
 > .\Repair.bat
 ```
 
-## 3. Install WMF 4.0 (powershell 4)
+## 2. Install WMF 4.0 (powershell 4)
 Download the Windows Management Framework
 [Windows6.1-KB2819745-x64-MultiPkg.msu](https://social.technet.microsoft.com/wiki/contents/articles/21016.how-to-install-windows-powershell-4-0.aspx#Windows_Management_Framework_4_supportability_matrix)
 from social.technet.microsoft.com, and install it.  After the reboot, check for
@@ -44,7 +44,7 @@ PSVersion           4.0
 ...
 ```
 
-## 4. Set All Networks to Private Interfaces
+## 3. Set All Networks to Private Interfaces
 Stop all programs that are using a network interface.  If your on a PARADISE
 environment then issue the:
 ```
@@ -60,19 +60,19 @@ Disable all network adapters in the `Network and Sharing Center` off of the
 When you toggle them back on, Windows will ask what type of network they're
 connected to; select "private" or "home", etc...
 
-## 5. Start WinRM
+## 4. Start WinRM
  * powershell: winrm quickconfig
    * answered 'y' to:
    1. Set WinRM service type to dealyed auto start?
    2. Create a WinRM listener on HTTP://* ....?
 
-## 6. Change the Windows Remote Shell Setting to enabled/true
+## 5. Change the Windows Remote Shell Setting to enabled/true
  * From [superuser.com](http://superuser.com/questions/1051813/how-to-properly-set-the-allow-remote-shell-access-setting-in-group-policy-so-a), Hit 'Start', in the searchbox enter `gpedit.msc` then press 'Enter'.
  * Find and click the "Computer Configuration"->"Administrative Templates"->"Windows Components"->"Windows Remote Shell" by drilling down into the folder structure on the left panel.
  * Double Click the "Allow Remote Shell Access" policy and then check `enabled` in the box on the left.
  * Click "OK" to accept the changes.
 
-## 7. Run the Ansible Config Script
+## 6. Run the Ansible Config Script
 The script can be found on the Ansible [Windows Support](http://docs.ansible.com/ansible/intro_windows.html#windows-system-prep) page. Run download and run this script in a
 PowerShell with the 'Verbose' flag.
 ```
@@ -149,7 +149,7 @@ Config
         MaxMemoryPerShellMB = 1024
         MaxShellsPerUser = 30
 ```
-# 8. Upping Remote Shell Resource Limits
+## 8. Upping Remote Shell Resource Limits
 If your trying to use a Windows VM as part of your build chain, like me, you'll
 want to go ahead and increase the memory and number-of-processes quota.  To do
 this, enter the following commands (via [social.technet.microsoft.com](https://social.technet.microsoft.com/Forums/office/en-US/4d6e99ab-970f-4616-b53d-2b44e56caf16/not-enough-quota-is-available-to-process-this-command?forum=winserverpowershell)) in the PowerShell:
@@ -161,7 +161,7 @@ winrm set winrm/config/winrs '@{MaxMemoryPerShellMB="8000"}'
 
 This will allow the sessions to take up to 8GB of memory and 10,000 processes.
 
-# 9. Install Bonjour Print Services for Zeroconf
+## 9. Install Bonjour Print Services for Zeroconf
 I like to use a domain name instead of IP addresses, especially when testing a
 setup.  This allows you to use the .local zeroconf tld on your test network in
 conjuction with your computer's name. The Ansible example included in this repo
@@ -169,7 +169,7 @@ uses `win1.local`. To change your computer's name follow these instructions from
 [kb.iu.edu](https://kb.iu.edu/d/ajnx).  To install Bonjour, download the binary
 from [support.apple.com](https://support.apple.com/kb/dl999?locale=en_US).
 
-# 10. Ansible Test
+## 10. Ansible Test
 The `test.yml` is a simple test from [docs.ansible.com](https://raw.githubusercontent.com/ansible/ansible-examples/master/windows/test.yml), that simply runs an ip
 check and a file stat. The one included here has the hosts changed to
 'windows'.  Before running the `run_test.sh`, modify the `HOSTS` file with
