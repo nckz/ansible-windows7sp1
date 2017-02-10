@@ -12,7 +12,7 @@ Download the .NET 4.5 [dotNetFx45_Full_setup.exe](https://www.microsoft.com/en-u
 
 If this doesn't install checkout step 1.a, else move on to step 2.
  
-## 1.a Run the Repair script (required to install .NET)
+### 1.a Run the Repair script (required to install .NET)
 I wasn't able to install the .NET framework directly because I kept getting an
 error that looked like this:
 
