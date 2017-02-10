@@ -1,0 +1,2 @@
+[windows]
+win1.local ansible_connection=winrm ansible_user=<username> ansible_password=<userpass> ansible_winrm_server_cert_validation=ignore ansible_port=5986
