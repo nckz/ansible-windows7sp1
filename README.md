@@ -7,6 +7,19 @@ successful Ansible win_ping.
 Ansible up and running. This setup should be performed on a secure private
 network.**
 
+If you're running a PARADISE environment and are thinking about switching to
+[VirtualBox](https://www.virtualbox.org/wiki/Downloads), do the switch first,
+then continue on with these instructions. Make sure you're getting the most
+out of your install by using the settings described in
+[JDPFu.com](http://blog.jdpfu.com/2012/09/14/solution-for-slow-ubuntu-in-virtualbox).
+
+You may want to install [git](https://git-scm.com/download/win) and clone THIS
+repository so you'll have the necessary scripts in your Windows VM.  I like
+installing the portable version for this step and then provision one later with
+my server setup in Ansible.
+
+    $ git clone https://github.com/nckz/ansible-windows7sp1.git
+
 ## 1. Install .NET 4.5 (required by WMF-installer :@ )
 Download the .NET 4.5 [dotNetFx45_Full_setup.exe](https://www.microsoft.com/en-us/download/confirmation.aspx?id=30653) from microsoft.com, then install.
 
@@ -52,13 +65,11 @@ environment then issue the:
 ```
 in a command window.
 
-Disable all network adapters in the `Network and Sharing Center` off of the
-`Control Panel` (in PARADISE leave the "Hospital Connection" on if its set to
-"private"). Also disable the loopback connection if necessary (if its labeled
-"public").
-
-When you toggle them back on, Windows will ask what type of network they're
-connected to; select "private" or "home", etc...
+Disable the "Public" loopback network adapters in the `Network and Sharing
+Center` (located in the `Control Panel`).  The other adaptors should have
+private profiles; if they don't, then change them to private. You can do this
+by temporarily disabling them. When you toggle them back on, Windows will ask
+what type of network they're connected to; select "work" or "home", etc...
 
 ## 4. Start WinRM
 In a PowerShell enter the following command:
@@ -173,6 +184,14 @@ conjuction with your computer's name. The Ansible example included in this repo
 uses `win1.local`. To change your computer's name follow these instructions from
 [kb.iu.edu](https://kb.iu.edu/d/ajnx).  To install Bonjour, download the binary
 from [support.apple.com](https://support.apple.com/kb/dl999?locale=en_US).
+
+You may want to install
+[zeroconf](https://help.ubuntu.com/community/EasyHomeFileSharingWithFTPAndZeroconf)
+on your host; for Ubuntu hosts use:
+
+```bash
+$ sudo apt-get install avahi-daemon avahi-discover avahi-utils libnss-mdns service-discovery-applet mdns-scan
+```
 
 ## 10. Ansible Test
 The `test.yml` is a simple test from [docs.ansible.com](https://raw.githubusercontent.com/ansible/ansible-examples/master/windows/test.yml), that simply runs an ip

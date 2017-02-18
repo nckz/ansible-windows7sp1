@@ -23,3 +23,8 @@
              - "not stat_file.stat.isdir"
              - "stat_file.stat.size > 0"
              - "stat_file.stat.md5"
+
+    - name: win_ping
+      win_ping:
+      register: pingres
+    - debug: var=pingres
